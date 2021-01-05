@@ -12,8 +12,8 @@ app.use(logger('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
-app.use(require('./routes/api.js'));
-app.use(require('./routes/view.js'));
+require('./routes/api.js')(app);
+// require('./routes/view.js')(app);
 
 //////////////////////////////////////////////////////////
 ///////// DB CONNECTION
