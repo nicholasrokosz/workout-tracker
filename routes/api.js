@@ -9,4 +9,18 @@ module.exports = app => {
       res.status(500).end();
     }
   });
+  app.put('/api/workouts/:id', async ({ params, body }, res) => {
+    try {
+      const updatedWorkout = await Workout.findByIdAndUpdate(
+        params.id,
+        {
+          $push: { excercises: body },
+        },
+        { new: true, upsert: true }
+      );
+      res.json(updatedWorkout);
+    } catch (err) {
+      res.status(500).end();
+    }
+  });
 };
