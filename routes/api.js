@@ -17,7 +17,7 @@ module.exports = app => {
         {
           $push: { excercises: body },
         },
-        { new: true, upsert: true }
+        { new: true, runValidators: true }
       );
       res.json(updatedWorkout);
     } catch (err) {
