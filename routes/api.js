@@ -6,7 +6,7 @@ module.exports = app => {
       const workouts = await Workout.find({});
       res.json(workouts);
     } catch (err) {
-      console.log(err);
+      res.status(500).end();
     }
   });
 };
