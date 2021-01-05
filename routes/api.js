@@ -9,6 +9,7 @@ module.exports = app => {
       res.status(500).end();
     }
   });
+
   app.put('/api/workouts/:id', async ({ params, body }, res) => {
     try {
       const updatedWorkout = await Workout.findByIdAndUpdate(
@@ -19,6 +20,15 @@ module.exports = app => {
         { new: true, upsert: true }
       );
       res.json(updatedWorkout);
+    } catch (err) {
+      res.status(500).end();
+    }
+  });
+
+  app.post('/api/workouts', async (req, res) => {
+    try {
+      const newWorkout = await Workout.create({});
+      res.json(newWorkout);
     } catch (err) {
       res.status(500).end();
     }
