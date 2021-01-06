@@ -10,6 +10,15 @@ module.exports = app => {
     }
   });
 
+  app.get('/api/workouts/range', async (req, res) => {
+    try {
+      const data = await Workout.find({});
+      res.json(data);
+    } catch (err) {
+      res.status(500).end();
+    }
+  });
+
   app.put('/api/workouts/:id', async ({ params, body }, res) => {
     try {
       const updatedWorkout = await Workout.findByIdAndUpdate(
