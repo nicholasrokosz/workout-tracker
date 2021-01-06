@@ -24,7 +24,7 @@ module.exports = app => {
       const updatedWorkout = await Workout.findByIdAndUpdate(
         params.id,
         {
-          $push: { excercises: body },
+          $push: { exercises: body },
         },
         { new: true, runValidators: true }
       );
